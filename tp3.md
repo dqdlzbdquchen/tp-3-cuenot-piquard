@@ -18,7 +18,27 @@ Pour compter le nombre de paquet disponible en mis à jour : apt list --upgradab
 Afin de ne pas avoir a taper les commandes de MAJ, nous pouvons créer un alias.
 Exemple : alias maj="sudo apt update && sudo apt upgrade"
 
-Le paquet fortune permete d'afficher des citations depuis une base de données.
+Le paquet fortunes permet d'afficher des citations depuis une base de données.
+
+Pour chercher un paquet pour jouer au sudoku par exemple utilisez : apt search sudoku
+
+Si vous voulez afficher les derniers paquets installés : grep "apt install" /var/log/apt/history.log
+
+### Pour connaitre le paquet d'une commande
+```
+nano origine-commande
+```
+
+```bash
+#!/bin/bash
+var=$(dpkg -S $(which $1))
+echo $(dpkg -S $(which $1) | cut -d: -f1)
+```
+
+```
+bash origine-commande <commande>
+```
+
 ## Installation d'un paquet par PPA
 
 ## Création de dépôt personnalisé
